@@ -34,7 +34,7 @@ class GoogleSearch(unittest.TestCase):
 titles = driver.find_elements_by_class_name('r')
 for title in titles:
     assert "pythonn" in title.text.lower()
-
+    print('nothing')
 
     def tearDown(self):
         self.driver.quit()
