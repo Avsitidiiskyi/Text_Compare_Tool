@@ -1,8 +1,13 @@
 from random import randint
 
 from pip._vendor.distlib.compat import raw_input
+
+
 print("----СВИСТАТЬ ВСЕЕЕХ НАВЕЕЕРХ-----")
+# "\033[44;33mX\033[m"   or  "\033[0;31mX\033[m"
+X = '\033[44;33mX\033[m'
 board = []
+
 
 for i in range(0, 10):
     board.append(['O'] * 10)  # iteration to create battlefield
@@ -41,8 +46,8 @@ def vertical(board):
 ship_raw = horizon(board)
 ship_col = vertical(board)
 
-#print(ship_raw) #- print to see actual randint result
-#print(ship_col)# - print to see actual randint result
+print(ship_raw) #- print to see actual randint result
+print(ship_col)# - print to see actual randint result
 
 for charge in range(4):
     print('Выстрел', charge + 1)
@@ -51,8 +56,9 @@ for charge in range(4):
 
     if guess_row == ship_raw and guess_col == ship_col:
         print("Есть попадание!!!")
-        board[guess_row][guess_col] = "K"
+        board[guess_row][guess_col] = "\033[0;31mK\033[m"
         gam_win()
+        print_board(board)
         break
 
 
@@ -61,20 +67,20 @@ for charge in range(4):
             #(guess_row < 0 or guess_row > 10) or (guess_col < 0 or guess_col > 10): - alternative
             print("\n \n Мой капитан, бухать нужно меньше!\n Ты ж, говядина такая, даже в корабль в подзорную трубу не видишь!!!! ")
 
-        elif (board[guess_row][guess_col] == "X"):
+        elif (board[guess_row][guess_col] == X):
             tuppizza()
         else:
             print("Мимо!")
             if charge == 3:
                 gam_over()
 
-    if charge == 3 and (board[guess_row][guess_col] == "X"):
+    if charge == 3 and (board[guess_row][guess_col] == X):
         kkkombo()
 
 
 
 
-    board[guess_row][guess_col] = "X"
+    board[guess_row][guess_col] = X
     print_board(board)
 
 
