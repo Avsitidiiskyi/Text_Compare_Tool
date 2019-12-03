@@ -1,6 +1,5 @@
-
-
-
+RED = '\033[0;31m'
+GREEN = '\033[0;36m'
 expected = input('Enter expected text:')
 actual = input('Enter actual text:')
 
@@ -13,20 +12,14 @@ def compare():
     for i in range(min_range):
         if expected[i] != actual[i]:
             print(f'Error from index - {i}')
-            print(f'Expected text {expected[i]}')
-            print(f'Actual text {actual[i]}')
-
             print(expected)
-            print('\033[1;31;40m'+ actual[i:] + '\033[0;37;40m \n')
-
+            print(actual[:i] + RED + actual[i:])
             break
-if expected == actual:
-    print('Text is equal ')
 
+
+if expected == actual:
+    print(GREEN + 'TEXT IS EQUAL')
 
 print(compare())
-
-
-
 
 
